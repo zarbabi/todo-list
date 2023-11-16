@@ -1,23 +1,50 @@
 <div class="container">
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">Todo List</h5>
-      <div class="card-text">  <ul class="list-group">
-      <li class="list-group-item" *ngFor="let item of tasks">{{item}}
-        <button class="btn btn-danger btn-sm" (click)="removeTask(item)"> remove</button></li>
-
-    </ul></div>
-         </div>
-  </div>
+  <div class="row">
 
 
-<hr/>
- {{form.value |json}}
-  <form [formGroup]="form" (ngSubmit)="createTask()">
-    <div class="mb-3">
-      <label for="task" class="form-label">Task</label>
-      <input formControlName="task" type="text" class="form-control" id="task" placeholder="enter your task">
+    <div class="card cols-md-6" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Todo List</h5>
+        <div class="card-text">
+          <ul class="list-group">
+            <li *ngFor="let item of tasks" class="list-group-item">
+              <div class="form-check">
+                <input (change)="doneTask(item)" class="form-check-input" id="flexCheckDefault" type="checkbox">
+                <label class="form-check-label" for="flexCheckDefault">
+                  {{item}}
+                  <button (click)="removeTask(item)" class="btn btn-danger btn-sm"> remove</button>
+                </label>
+              </div>
+
+            </li>
+
+          </ul>
+        </div>
+      </div>
     </div>
-    <button type="submit" class="btn btn-primary"> Save</button>
+
+    <div class="card  cols-md-6" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Done List</h5>
+        <div class="card-text">
+          <ul class="list-group">
+            <li *ngFor="let item of doneTasks" class="list-group-item">{{item}}
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <hr/>
+
+  <!-- {{form.value |json}}-->
+  <form (ngSubmit)="createTask()" [formGroup]="form">
+    <div class="mb-3">
+      <label class="form-label" for="task">Task</label>
+      <input class="form-control" formControlName="task" id="task" placeholder="enter your task" type="text">
+    </div>
+    <button class="btn btn-primary" type="submit"> Save</button>
   </form>
 </div>
