@@ -11,6 +11,7 @@ import { TodoListPageComponent } from './pages/todo-list-page/todo-list-page.com
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import {RouterLink, RouterModule, RouterOutlet} from "@angular/router";
 import { AppRoutingModule } from './app-routing.module';
+import { TodoPageComponent } from './pages/todo-page/todo-page.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AppRoutingModule } from './app-routing.module';
     DoneTodoComponent,
     CreateTodoPageComponent,
     TodoListPageComponent,
-    HomePageComponent
+    HomePageComponent,
+    TodoPageComponent
 
   ],
   imports: [

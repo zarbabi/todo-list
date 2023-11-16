@@ -1,33 +1,66 @@
 
-  <div class="row">
+<!--<h3>{{todo?.title}}</h3>-->
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">Title</th>
+    <th scope="col">Create At</th>
+    <th scope="col">Status</th>
+    <th scope="col">Done At</th>
+    <th scope="col">Option</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let todo of todoService.allTodos">
+    <th scope="row">{{todo?.id}}</th>
+    <td>{{todo?.title}}</td>
+    <td>{{todo?.createAt | date:'medium'}}</td>
+    <td>
+      <span *ngIf="todo.done" class="badge text-bg-primary">Done</span>
+      <span *ngIf="!todo.done" class="badge text-bg-warning">Pending</span>
+
+    <td>{{todo?.doneAt | date:'YYYY-MM-DD HH:MM' }}</td>
+    <td><a class="btn btn-sm btn-info me-2" [routerLink]="['/todo',todo?.id]">View</a>
+      <button (click)="todoService.removeTask(todo.id)" class="btn btn-danger btn-sm me-2"> remove</button>
+      <button *ngIf="!todo.done" (click)="todoService.doneTask(todo.id)" class="btn btn-primary btn-sm me-2"> Done</button>
+    </td>
+
+  </tr>
+
+  </tbody>
+</table>
+
+<!--  <div class="row">-->
 
 
-    <div class="card cols-md-6" style="width: 30rem;">
-      <div class="card-body">
-        <h5 class="card-title">Todo List</h5>
-        <div class="card-text">
-          <ul class="list-group">
-            <li *ngFor="let item of todoService.currentTodos" class="list-group-item">
-              <app-todo [todo]="item"/>
-            </li>
+<!--    <div class="card cols-md-6" style="width: 40rem;">-->
+<!--      <div class="card-body">-->
+<!--        <h5 class="card-title">Todo List</h5>-->
+<!--        <div class="card-text">-->
+<!--          <ul class="list-group">-->
+<!--            <li *ngFor="let item of todoService.currentTodos" class="list-group-item">-->
+<!--              <app-todo [todo]="item"/>-->
+<!--            </li>-->
 
-          </ul>
-        </div>
-      </div>
-    </div>
+<!--          </ul>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
 
-    <div class="card  cols-md-6" style="width: 30rem;">
-      <div class="card-body">
-        <h5 class="card-title">Done List</h5>
-        <div class="card-text">
-          <ul class="list-group">
-            <li *ngFor="let item of todoService.doneTodos" class="list-group-item"> <app-done-todo [todo]="item"/>
-            </li>
+<!--    <div class="card  cols-md-6" style="width: 40rem;">-->
+<!--      <div class="card-body">-->
+<!--        <h5 class="card-title">Done List</h5>-->
+<!--        <div class="card-text">-->
+<!--          <ul class="list-group">-->
+<!--            <li *ngFor="let item of todoService.doneTodos" class="list-group-item"> <app-done-todo [todo]="item"/>-->
+<!--            </li>-->
 
-          </ul>
-        </div>
-      </div>
-    </div>
+<!--          </ul>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
 
-  </div>
-  <hr/>
+<!--  </div>-->
+<!--  <hr/>-->

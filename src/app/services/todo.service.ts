@@ -15,6 +15,9 @@ export class TodoService {
   public get doneTodos() :Todo[] {
     return this.todos.filter(x=> x.done)
   }
+  public get allTodos() :Todo[] {
+    return this.todos;
+  }
 
   saveTodos(){
     const data : StorageModel={
@@ -23,6 +26,10 @@ export class TodoService {
 
     }
     localStorage.setItem('data', JSON.stringify(data))
+  }
+
+  public getTodo(id:number) :Todo | undefined{
+    return this.todos.find(x=>x.id==id)
   }
   public createTodo(title:string){
     const todo:Todo ={

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {TodoService} from "../../services/todo.service";
+import { Router} from "@angular/router";
 
 @Component({
   selector: 'app-create-todo-page',
@@ -10,7 +11,7 @@ import {TodoService} from "../../services/todo.service";
 export class CreateTodoPageComponent {
   form:FormGroup;
 
-  constructor(fb:FormBuilder, public todoService:TodoService) {
+  constructor(fb:FormBuilder, public todoService:TodoService, private router:Router) {
     this.form=fb.group({
       'task':[null,[Validators.required, Validators.minLength(3)]]
     })
@@ -27,6 +28,7 @@ export class CreateTodoPageComponent {
     this.todoService.createTodo(task);
     this.form.reset();
 
+    this.router.navigate(['/list']);
   }
 
 }
