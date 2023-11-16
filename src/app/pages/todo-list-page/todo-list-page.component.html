@@ -1,0 +1,33 @@
+
+  <div class="row">
+
+
+    <div class="card cols-md-6" style="width: 30rem;">
+      <div class="card-body">
+        <h5 class="card-title">Todo List</h5>
+        <div class="card-text">
+          <ul class="list-group">
+            <li *ngFor="let item of todoService.currentTodos" class="list-group-item">
+              <app-todo [todo]="item"/>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card  cols-md-6" style="width: 30rem;">
+      <div class="card-body">
+        <h5 class="card-title">Done List</h5>
+        <div class="card-text">
+          <ul class="list-group">
+            <li *ngFor="let item of todoService.doneTodos" class="list-group-item"> <app-done-todo [todo]="item"/>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <hr/>
