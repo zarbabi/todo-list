@@ -21,7 +21,7 @@
       <span *ngIf="todo.done" class="badge text-bg-primary">Done</span>
       <span *ngIf="!todo.done" class="badge text-bg-warning">Pending</span>
 
-    <td>{{todo?.doneAt | date:'YYYY-MM-DD HH:MM' }}</td>
+    <td>{{todo?.doneAt | date:'YYYY-MM-dd HH:mm' }}</td>
     <td><a class="btn btn-sm btn-info me-2" [routerLink]="['/todo',todo?.id]">View</a>
       <button (click)="todoService.removeTask(todo.id)" class="btn btn-danger btn-sm me-2"> remove</button>
       <button *ngIf="!todo.done" (click)="todoService.doneTask(todo.id)" class="btn btn-primary btn-sm me-2"> Done</button>
