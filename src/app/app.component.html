@@ -7,15 +7,8 @@
         <h5 class="card-title">Todo List</h5>
         <div class="card-text">
           <ul class="list-group">
-            <li *ngFor="let item of currentTodos" class="list-group-item">
-              <div class="form-check">
-                <input class="form-check-input" id="flexCheckDefault" type="checkbox" (change)="doneTask(item.id)" >
-                <label class="form-check-label" for="flexCheckDefault">
-                 {{item.id}}| {{item.title}} - {{item.createAt | date :'medium'}}
-                  <button (click)="removeTask(item.id)" class="btn btn-danger btn-sm"> remove</button>
-                </label>
-              </div>
-
+            <li *ngFor="let item of todoService.currentTodos" class="list-group-item">
+              <app-todo [todo]="item"/>
             </li>
 
           </ul>
@@ -28,7 +21,7 @@
         <h5 class="card-title">Done List</h5>
         <div class="card-text">
           <ul class="list-group">
-            <li *ngFor="let item of doneTodos" class="list-group-item">{{item.title}} - {{item.doneAt |date : 'medium'}}
+            <li *ngFor="let item of todoService.doneTodos" class="list-group-item"> <app-done-todo [todo]="item"/>
             </li>
 
           </ul>
