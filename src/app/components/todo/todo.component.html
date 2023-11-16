@@ -1,9 +1,8 @@
 <div class="form-check">
   <input class="form-check-input" id="todo-{{todo.id}}" type="checkbox"
-
-  ><!--         (change)="doneTask(todo.id)" -->
+         (change)="doneTask(todo.id)">
   <label class="form-check-label" for="todo-{{todo.id}}">
     {{todo.id}}| {{todo.title}} - {{todo.createAt | date :'medium'}}
-<!--    <button (click)="removeTask(todo.id)" class="btn btn-danger btn-sm"> remove</button>-->
+   <button (click)="deleteTask(todo.id)" class="btn btn-danger btn-sm"> remove</button>
   </label>
 </div>
